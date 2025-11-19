@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
-import { cn } from "@repo/tailwind-config/functions/cn";
 import { geistMono, inter, satoshi } from "../styles/font";
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(inter.variable, satoshi.variable, geistMono.variable)}
+      className={`${inter.variable}, ${satoshi.variable}, ${geistMono.variable}`}
     >
       <body>{children}</body>
     </html>
