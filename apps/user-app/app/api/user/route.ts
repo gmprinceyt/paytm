@@ -4,8 +4,8 @@ import { prisma } from "@repo/db";
 export const GET = async () => {
   const res = await prisma.user.create({
     data: {
-      email: "asd",
-      name: "adsads",
+      email: "aman4545@gmail.com",
+      name: "Aman",
     },
   });
   console.log(res)
