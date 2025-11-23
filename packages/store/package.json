@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "devDependencies": {
-    "@repo/typescript-config":"workspace:*"
+    "@repo/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "jotai": "^2.15.1"
   }
 }

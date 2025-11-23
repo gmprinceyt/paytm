@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { geistMono, inter, satoshi } from "../styles/font";
+import { Providers } from "../components/provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable}, ${satoshi.variable}, ${geistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
