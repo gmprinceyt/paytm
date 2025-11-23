@@ -1,7 +1,12 @@
 "use client";
 
-import { Provider } from "@repo/store";
+import { Provider as GlobalState } from "@repo/store";
+import { SessionProvider } from "next-auth/react";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
-  return <Provider>{children}</Provider>;
+  return (
+    <SessionProvider>
+      <GlobalState>{children}</GlobalState>;
+    </SessionProvider>
+  );
 };

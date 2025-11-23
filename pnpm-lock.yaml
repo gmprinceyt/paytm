@@ -20,6 +20,9 @@ importers:
 
   apps/user-app:
     dependencies:
+      '@prisma/client':
+        specifier: ^7.0.0
+        version: 7.0.0(prisma@7.0.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2))(typescript@5.9.2)
       '@repo/db':
         specifier: workspace:*
         version: link:../../packages/database
@@ -38,6 +41,9 @@ importers:
       next-auth:
         specifier: ^4.24.13
         version: 4.24.13(next@16.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      pg:
+        specifier: ^8.16.3
+        version: 8.16.3
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -90,9 +96,6 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
-      pg:
-        specifier: ^8.16.3
-        version: 8.16.3
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*

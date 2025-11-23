@@ -6,10 +6,12 @@ export const GET = async () => {
     data: {
       email: "aman4545@gmail.com",
       name: "Aman",
+      password: "12345",
     },
   });
-  console.log(res)
+  console.log(res);
   return NextResponse.json({
-    message: "hi there",
+    message: "User Created Successfully!!",
+    res,
   });
 };
