@@ -20,6 +20,12 @@ importers:
 
   apps/bank_webhook_handler:
     dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
