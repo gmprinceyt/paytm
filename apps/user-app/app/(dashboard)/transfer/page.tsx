@@ -10,7 +10,6 @@ export default async function Transfer() {
   const balance = await getBalance(Number(session?.user.id!) || 0);
   return (
     <div className="flex  gap-3">
-      {`${JSON.stringify(balance)}`}
       <AddMoney />
       <BalanceCard
         amount={balance?.amount || 0}
@@ -32,17 +31,16 @@ export default async function Transfer() {
 
 async function getBalance(id: number) {
   try {
-    console.log(id)
     const res = await prisma.balance.findUnique({
-      where: { id },
+      where: { userId: id },
       select: {
         amount: true,
         locked: true,
       },
     });
-    console.log(res)
     return res;
   } catch (e) {
     console.log(e);
   }
+  return null;
 }

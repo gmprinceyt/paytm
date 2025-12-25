@@ -1,7 +1,7 @@
 import { prisma } from "../src"
 
 
-async function main() {
+export default async function main() {
   const alice = await prisma.user.upsert({
     where: { number: '1111111111' },
     update: {},
