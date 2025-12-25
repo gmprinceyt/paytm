@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
-import { geistMono, inter, satoshi } from "../styles/font";
+import { geistMono, geistSans, satoshi } from "../styles/font";
 import { Providers } from "../components/provider";
 import { AppbarClient } from "../components/AppbarClient";
 import Sidebar from "../components/Sidebar";
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable}, ${satoshi.variable}, ${geistMono.variable}`}
+      className={`${satoshi.variable} ${geistMono.variable} ${geistSans.variable} font-sens`}
     >
       <body>
         <Providers>
