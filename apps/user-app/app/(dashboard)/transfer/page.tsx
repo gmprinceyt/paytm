@@ -8,6 +8,7 @@ import { authOptions } from "../../lib/auth";
 export default async function Transfer() {
   const session = await getServerSession(authOptions);
   const balance = await getBalance(Number(session?.user.id!) || 0);
+  const transactions = await getOnRampTransactions(Number(session?.user.id!) || 0)
   return (
     <div className="flex  gap-3">
       <AddMoney />
@@ -16,14 +17,7 @@ export default async function Transfer() {
         locked={balance?.locked || 0}
       />
       <OnRampTransactions
-        transactions={[
-          {
-            time: new Date(),
-            amount: 5000,
-            provider: "HDFC Bank",
-            status: "Pending",
-          },
-        ]}
+        transactions={transactions}
       />
     </div>
   );
@@ -43,4 +37,24 @@ async function getBalance(id: number) {
     console.log(e);
   }
   return null;
+}
+
+
+async function getOnRampTransactions(userId:number){
+    try {
+     const transactions =  await prisma.onRampTransaction.findMany({
+        where: {userId},
+        select: {
+          amount: true,
+          startTime: true,
+          provider:true,
+          status: true
+        }
+      })
+      return transactions;
+    } catch (error) {
+      console.log(error)
+    }
+
+    return []
 }
