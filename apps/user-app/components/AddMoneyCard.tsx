@@ -25,7 +25,7 @@ export function AddMoney() {
   const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || "");
 
   return (
-    <Card title="add Money">
+    <Card title="Add Money">
       <div className="w-full">
         <TextInput
           label="Amount"
@@ -34,7 +34,7 @@ export function AddMoney() {
           onChange={(e) => setValue(Number(e.target.value))}
         />
 
-        <div className="py-4 text-left">Bank</div>
+        <div className="py-2 text-left">Bank</div>
 
         <Select
           options={SUPPORTED_BANKS.map((x) => ({

@@ -19,14 +19,14 @@ export const OnRampTransactions = ({
   }
   return (
     <Card title="Recent Transactions">
-      <div className="pt-2">
-        {transactions.map((t, i) => (
-          <div key={i} className="flex justify-between">
+      <div className="pt-2 overflow-y-scroll max-h-[260px]">
+        {transactions.reverse().map((t, i) => (
+          <div key={i} className="flex justify-between ">
             <div>
               <div className="text-sm">Received INR</div>
               <div className="text-slate-600 text-xs">
                 {t.startTime.toDateString()} 
-                <span>  {t.status}</span> 
+                <span className={` ${t.status === "Success" && "text-green-400"} text-black font-medium`}>  {t.status}</span> 
               </div>
             </div>
             <div className="flex flex-col justify-center">

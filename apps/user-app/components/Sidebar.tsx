@@ -2,14 +2,10 @@ import { SidebarItem } from "./SidebarLink";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex">
-      <div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28">
+    <div className="flex max-w-[1440px] overflow-hidden h-[calc(100vh-60px)]  mx-auto bg-zinc-100 ">
+      <div className="w-56 border-r border-slate-300 h-full  mr-4 pt-28">
         <div>
-          <SidebarItem 
-            href={"/dashboard"} 
-            icon={<HomeIcon />} 
-            title="Home" 
-          />
+          <SidebarItem href={"/dashboard"} icon={<HomeIcon />} title="Home" />
           <SidebarItem
             href={"/transfer"}
             icon={<TransferIcon />}
@@ -20,12 +16,13 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             icon={<TransactionsIcon />}
             title="Transactions"
           />
+          <SidebarItem href={"/p2p"} icon={<P2P />} title="P2P Transfer" />
         </div>
       </div>
-        {children}
+      <div className="w-full  px-6">{children}</div>
     </div>
   );
-};
+}
 
 // Icons Fetched from https://heroicons.com/
 function HomeIcon() {
@@ -79,6 +76,25 @@ function TransactionsIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      />
+    </svg>
+  );
+}
+
+function P2P() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
       />
     </svg>
   );

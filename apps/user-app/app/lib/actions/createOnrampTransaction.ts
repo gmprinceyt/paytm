@@ -8,6 +8,10 @@ export async function createOnRampTransaction(
   provider: string,
   amount: number
 ) {
+
+  if (amount < 1){
+    return;
+  }
   const session = await getServerSession(authOptions);
 
   if (!session?.user || !session.user?.id) {

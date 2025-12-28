@@ -8,9 +8,10 @@ export function Card({
   title: string;
 }) {
   return (
-    <div className=" p-4">
-      <h1 className="text-xl  pb-2">{title}</h1>
+    <div className=" bg-[#ffffff] w-full px-4 py-6 shadow-md   rounded-md h-full  ">
+      <h1 className="text-xl font-mono  pb-2 font-medium">{title}</h1>
       <div>{children}</div>
     </div>
   );
 }
+   

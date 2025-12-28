@@ -1,14 +1,27 @@
 import type { Metadata } from "next";
-import "../styles/globals.css";
-import { geistMono, geistSans, satoshi } from "../styles/font";
+import "./globals.css";
 import { Providers } from "../components/provider";
 import { AppbarClient } from "../components/AppbarClient";
 import Sidebar from "../components/Sidebar";
+import { Geist, Geist_Mono } from "next/font/google";
+
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 
 export const metadata: Metadata = {
   title: "Wallet",
   description: "Simple wallet app",
 };
+
 
 export default function RootLayout({
   children,
@@ -18,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${satoshi.variable} ${geistMono.variable} ${geistSans.variable} font-sens`}
+      className={`${geistMono.variable} ${geistSans.variable} font-sens`}
     >
       <body>
         <Providers>

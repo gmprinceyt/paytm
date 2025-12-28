@@ -10,8 +10,10 @@ export default async function Transfer() {
   const balance = await getBalance(Number(session?.user.id!) || 0);
   const transactions = await getOnRampTransactions(Number(session?.user.id!) || 0)
   return (
-    <div className="flex  gap-3">
+    <div className="mt-10 flex w-full gap-4">
       <AddMoney />
+
+      <div className="w-full flex flex-col gap-3">
       <BalanceCard
         amount={balance?.amount || 0}
         locked={balance?.locked || 0}
@@ -19,6 +21,7 @@ export default async function Transfer() {
       <OnRampTransactions
         transactions={transactions}
       />
+      </div>
     </div>
   );
 }
