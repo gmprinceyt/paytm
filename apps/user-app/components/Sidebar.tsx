@@ -11,11 +11,6 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             icon={<TransferIcon />}
             title="Transfer"
           />
-          <SidebarItem
-            href={"/transactions"}
-            icon={<TransactionsIcon />}
-            title="Transactions"
-          />
           <SidebarItem href={"/p2p"} icon={<P2P />} title="P2P Transfer" />
         </div>
       </div>
