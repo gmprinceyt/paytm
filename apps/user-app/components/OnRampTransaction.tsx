@@ -26,7 +26,7 @@ export const OnRampTransactions = ({
               <div className="text-sm">Received INR</div>
               <div className="text-slate-600 text-xs">
                 {t.startTime.toDateString()} 
-                <span className={` ${t.status === "Success" && "text-green-400"} text-black font-medium`}>  {t.status}</span> 
+                <span className={` ${t.status   === "Success" && "text-green-400"} text-black font-medium`}>  {t.status}</span> 
               </div>
             </div>
             <div className="flex flex-col justify-center">

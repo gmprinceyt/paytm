@@ -58,6 +58,15 @@ export async function TransferP2P(toNumber: string, amount: number) {
           where: { userId: to },
           data: { amount: { increment: amount * 100} },
         });
+
+        await prisma.p2pTransfer.create({
+          data: {
+            amount: amount * 100,
+            timestamp: new Date(),
+            fromUserId: from,
+            toUserId: to 
+          }
+        })
       },
       {
         isolationLevel: "Serializable",
