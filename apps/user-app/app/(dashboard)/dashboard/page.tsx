@@ -1,10 +1,3 @@
 export default  function Dashboard(){
-    return <div>Hii there , Deshboard Here! 
-
-
-        <div className="font-sans">Satoshi text</div>
-<div className="font-geist">Geist Sans text</div>
-<div className="font-mono">Geist Mono text</div>
-
-    </div>
+    return <div>Deshboard Here! <span className="text-xs text-gray-200">Pendding to working in a dashboard </span></div>
 }

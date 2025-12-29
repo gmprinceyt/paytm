@@ -51,17 +51,17 @@ export async function TransferP2P(toNumber: string, amount: number) {
 
         await tx.balance.update({
           where: { userId: from },
-          data: { amount: { decrement: amount * 100 } },
+          data: { amount: { decrement: amount } },
         });
 
         await tx.balance.update({
           where: { userId: to },
-          data: { amount: { increment: amount * 100} },
+          data: { amount: { increment: amount} },
         });
 
         await prisma.p2pTransfer.create({
           data: {
-            amount: amount * 100,
+            amount: amount,
             timestamp: new Date(),
             fromUserId: from,
             toUserId: to 

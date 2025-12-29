@@ -27,7 +27,7 @@ export function SendCard() {
       />
       <br/>
       <Button onClick={async()=> {
-        const res =await TransferP2P(number, amount);
+        const res =await TransferP2P(number, amount * 100);
         alert(res?.message)
       }}>Send Money</Button>
     </Card>
