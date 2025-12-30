@@ -1,7 +1,7 @@
 import "dotenv/config"; 
 import express from "express";
 import { prisma } from "@repo/db";
-import { TPaymentInfo } from "./type";
+import { TPaymentInfo } from "./type.js";
 
 const app = express();
 app.use(express.json());

@@ -1,10 +1,12 @@
 {
   "name": "bank_webhook_handler",
   "version": "1.0.0",
-  "type": "commonjs",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/index.js",
+    "build": "tsc",
     "start": "node dist/index.js"
   },
   "dependencies": {

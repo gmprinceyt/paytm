@@ -1,5 +1,17 @@
 {
   "extends": "@repo/typescript-config/base.json",
-  "exclude": ["node_modules"],
-  "include": ["."]
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    ".prisma-client",
+    "**/.prisma-client/**"
+  ]
 }

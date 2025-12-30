@@ -1,6 +1,6 @@
 import "./global.css"
 
-export function Appbar({ onSignin, onSignout, user }: AppbarProps) {
+export function Appbar({ user }: AppbarProps) {
   return (
     <nav className="flex justify-between w-full">
       <div className="text-xl font-extrabold">Pay<span className="text-blue-500  ">TM</span></div>
