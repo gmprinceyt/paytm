@@ -1,6 +1,7 @@
 import { Card } from "@repo/ui/card";
-import { getSession } from "../app/page";
 import { prisma } from "@repo/db";
+import { authOptions } from "../app/lib/auth";
+import { getServerSession } from "next-auth";
 
 export type P2PTransferWithUsers = {
   id: number;
@@ -21,6 +22,7 @@ export type P2PTransferWithUsers = {
 };
 
 export async function TransactionsCard() {
+  const getSession = await getServerSession(authOptions);
   const raw = await Transactions(Number(getSession?.user?.id) || 0);
   const history = formatTransactions(raw, Number(getSession?.user?.id) || 0);
 

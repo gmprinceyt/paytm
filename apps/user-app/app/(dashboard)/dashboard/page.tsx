@@ -1,9 +1,11 @@
+import { getServerSession } from "next-auth";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransactions } from "../../../components/OnRampTransaction";
 import { TransactionsCard } from "../../../components/TransactionsCard";
-import { getSession } from "../../page";
+import { authOptions } from "../../lib/auth";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+    const getSession = await getServerSession(authOptions);
   return (
     <div className="py-4 ">
       <div className="text-xl font-extrabold">

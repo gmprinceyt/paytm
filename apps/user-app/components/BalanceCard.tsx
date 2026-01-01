@@ -1,11 +1,14 @@
 import { prisma } from "@repo/db";
 import { Card } from "@repo/ui/card";
-import { getSession } from "../app/page";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../app/lib/auth";
+
 
 export const BalanceCard = async () => {
+    const getSession = await getServerSession(authOptions);
   const balance = await getBalance(Number(getSession?.user.id) || 0);
-  const amount = balance?.amount!
-  const locked = balance?.locked!
+  const amount = balance?.amount || 0
+  const locked = balance?.locked || 0 
   return (
    <div className="max-h-[260px] w-full">
      <Card title={"Balance"}>

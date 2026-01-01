@@ -1,4 +1,4 @@
-import "dotenv/config"; 
+import "dotenv/config";
 import express from "express";
 import { prisma } from "@repo/db";
 import { TPaymentInfo } from "./type.js";
@@ -6,10 +6,7 @@ import { TPaymentInfo } from "./type.js";
 const app = express();
 app.use(express.json());
 
-
-
 app.post("/hdfcWebhook", async (req, res) => {
-
   const paymentInformation: TPaymentInfo = {
     token: req.body.token,
     userId: req.body.user_identifier,
@@ -34,9 +31,13 @@ app.post("/hdfcWebhook", async (req, res) => {
     }
 
     await prisma.$transaction([
-      prisma.balance.update({
+      prisma.balance.upsert({
         where: { userId: Number(paymentInformation.userId) },
-        data: {
+        create: {
+          amount: Number(paymentInformation.amount),
+          userId: Number(paymentInformation.userId),
+        },
+        update: {
           amount: {
             increment: Number(paymentInformation.amount),
           },

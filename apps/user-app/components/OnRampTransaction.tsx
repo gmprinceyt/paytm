@@ -1,9 +1,12 @@
 import { prisma } from "@repo/db";
 import { Card } from "@repo/ui/card";
-import { getSession } from "../app/page";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../app/lib/auth";
 
 export const OnRampTransactions = async () => {
+  const getSession = await getServerSession(authOptions);
   const transactions = await getOnRampTransactions(Number(getSession?.user.id!) || 0)
+  
   if (!transactions.length) {
     return (
       <Card title="Recent Transactions">
