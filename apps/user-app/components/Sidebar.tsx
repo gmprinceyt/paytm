@@ -2,7 +2,7 @@ import { SidebarItem } from "./SidebarLink";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex max-w-[1440px] overflow-hidden h-[calc(100vh-60px)]  mx-auto bg-zinc-100 ">
+    <div className="flex max-w-[1440px] overflow-hidden h-[calc(100vh-60px)]  mx-auto bg-zinc-100 select-none ">
       <div className="w-56 border-r border-slate-300 h-full  mr-4 pt-28">
         <div>
           <SidebarItem href={"/dashboard"} icon={<HomeIcon />} title="Home" />

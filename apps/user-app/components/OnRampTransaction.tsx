@@ -1,15 +1,9 @@
+import { prisma } from "@repo/db";
 import { Card } from "@repo/ui/card";
+import { getSession } from "../app/page";
 
-export const OnRampTransactions = ({
-  transactions,
-}: {
-  transactions: {
-    amount: number;
-    status: "Success" | "Processing" | "Failure";
-    provider: string;
-    startTime: Date;
-  }[];
-}) => {
+export const OnRampTransactions = async () => {
+  const transactions = await getOnRampTransactions(Number(getSession?.user.id!) || 0)
   if (!transactions.length) {
     return (
       <Card title="Recent Transactions">
@@ -29,12 +23,32 @@ export const OnRampTransactions = ({
                 <span className={` ${t.status   === "Success" && "text-green-400"} text-black font-medium`}>  {t.status}</span> 
               </div>
             </div>
-            <div className="flex flex-col justify-center">
+            <strong className={`flex flex-col justify-center ${t.status   === "Success" && "text-green-400"} ${t.status   === "Failure" && "text-red-400"}`}>
               + Rs {t.amount / 100}
-            </div>
+            </strong>
           </div>
         ))}
       </div>
     </Card>
   );
 };
+
+
+async function getOnRampTransactions(userId:number){
+    try {
+     const transactions =  await prisma.onRampTransaction.findMany({
+        where: {userId},
+        select: {
+          amount: true,
+          startTime: true,
+          provider:true,
+          status: true
+        }
+      })
+      return transactions;
+    } catch (error) {
+      console.log(error)
+    }
+
+    return []
+}

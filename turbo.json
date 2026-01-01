@@ -22,7 +22,7 @@
       "dependsOn": ["^lint", "^format"]
     },
     "dev": {
-      "dependsOn": ["^db:generate", "db:studio"],
+      "dependsOn": ["^db:generate"],
       "cache": false,
       "persistent": true
 
