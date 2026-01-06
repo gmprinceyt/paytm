@@ -66,5 +66,5 @@ app.post("/hdfcWebhook", async (req, res) => {
 });
 
 app.listen(3003, () =>
-  console.log("Back_webhook server started at http://localhost:3003")
+  console.log("Back_webhook server started at http://localhost:3003"),
 );

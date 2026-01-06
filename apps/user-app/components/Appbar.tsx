@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -12,16 +13,20 @@ export function Appbar({ user, onSignout }: AppbarProps) {
       </Link>
       <div className="flex gap-2 items-center cursor-pointer">
         <div className="relative">
-          <img
+          <Image
             onClick={() => setOpen(!open)}
             src={user?.image || "/profile.png"}
             height={35}
             width={35}
+            alt={`Profile photo ${user?.name}`}
             className="rounded-full bg-gray-200 "
           />
           {open && (
             <div className="absolute -left-10 bg-white shadow rounded mt-2">
-              <button  onClick={onSignout} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+              <button
+                onClick={onSignout}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
                 Logout
               </button>
             </div>

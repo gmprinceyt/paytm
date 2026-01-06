@@ -6,10 +6,9 @@ import { authOptions } from "../auth";
 
 export async function createOnRampTransaction(
   provider: string,
-  amount: number
+  amount: number,
 ) {
-
-  if (amount < 1){
+  if (amount < 1) {
     return;
   }
   const session = await getServerSession(authOptions);

@@ -11,27 +11,29 @@ export function SendCard() {
   const [number, setNumber] = useState("");
   return (
     <div className="">
-
-    <Card title="Send Money, vai phone number">
-      <TextInput
-        label="Reciever Number "
-        placeholder="Enter Number Phone "
-        type="tel"
-        onChange={(e) => setNumber(e.target.value)}
-      />
-      <TextInput
-        label="Amount "
-        placeholder="Enter Amount "
-        type="number"
-        onChange={(e) => setAmount(Number(e.target.value))}
-      />
-      <br/>
-      <Button onClick={async()=> {
-        const res =await TransferP2P(number, amount * 100);
-        alert(res?.message)
-      }}>Send Money</Button>
-    </Card>
-        </div>
-
+      <Card title="Send Money, vai phone number">
+        <TextInput
+          label="Reciever Number "
+          placeholder="Enter Number Phone "
+          type="tel"
+          onChange={(e) => setNumber(e.target.value)}
+        />
+        <TextInput
+          label="Amount "
+          placeholder="Enter Amount "
+          type="number"
+          onChange={(e) => setAmount(Number(e.target.value))}
+        />
+        <br />
+        <Button
+          onClick={async () => {
+            const res = await TransferP2P(number, amount * 100);
+            alert(res?.message);
+          }}
+        >
+          Send Money
+        </Button>
+      </Card>
+    </div>
   );
 }

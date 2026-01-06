@@ -56,7 +56,7 @@ export async function TransferP2P(toNumber: string, amount: number) {
 
         await tx.balance.update({
           where: { userId: to },
-          data: { amount: { increment: amount} },
+          data: { amount: { increment: amount } },
         });
 
         await prisma.p2pTransfer.create({
@@ -64,20 +64,21 @@ export async function TransferP2P(toNumber: string, amount: number) {
             amount: amount,
             timestamp: new Date(),
             fromUserId: from,
-            toUserId: to 
-          }
-        })
+            toUserId: to,
+          },
+        });
       },
       {
         isolationLevel: "Serializable",
-      }
+      },
     );
 
     return { success: true, message: "Transfer successful" };
-  } catch (error: any) {
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Transfer failed";
     return {
       success: false,
-      message: error.message || "Transfer failed",
+      message: errorMessage,
     };
   }
 }
