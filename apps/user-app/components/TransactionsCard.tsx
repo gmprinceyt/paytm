@@ -97,7 +97,7 @@ async function Transactions(userId: number): Promise<P2PTransferWithUsers[]> {
 
 function formatTransactions(
   transactions: P2PTransferWithUsers[],
-  userId: number
+  userId: number,
 ) {
   return transactions.map((tx) => ({
     id: tx.id,

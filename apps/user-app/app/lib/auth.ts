@@ -23,7 +23,7 @@ export const authOptions: AuthOptions = {
           type: "password",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // TODO: do zod or otp verifation
         if (!credentials) {
           return null;
@@ -35,7 +35,7 @@ export const authOptions: AuthOptions = {
         if (user) {
           const isVerifed = await bcrypt.compare(
             credentials.password,
-            user.password
+            user.password,
           );
           if (isVerifed) {
             return {
@@ -74,19 +74,17 @@ export const authOptions: AuthOptions = {
         }
         return null;
       },
-
-
     }),
   ],
   callbacks: {
-    jwt({user, token}){
+    jwt({ user, token }) {
       if (user) {
         token.sub = user.id;
       }
-    return token;
+      return token;
     },
     session({ session, token }) {
-      if (session.user){
+      if (session.user) {
         session.user.id = token.sub as string;
       }
       return session;
@@ -94,4 +92,3 @@ export const authOptions: AuthOptions = {
   },
   secret: process.env.AUTH_SECRET,
 };
-
