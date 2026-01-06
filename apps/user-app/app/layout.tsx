@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wallet",
-  description: "Simple wallet app",
+  title: "Digital Payment Wallet – Fast, Secure & Easy Online Payments",
+  description: "Use our digital payment wallet to send, receive, and manage money securely. Fast transactions, instant payments, and safe online wallet for everyday use.",
 };
 
 export default function RootLayout({
