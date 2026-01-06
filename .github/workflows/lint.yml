@@ -17,7 +17,9 @@ jobs:
 
             - name: run linting check 
               run: pnpm run lint
+
             - name: run formatting check  
-              run: 
+              run:  pnpm run format 
+
             - name:  run check-types
               run: pnpm run check-types 
